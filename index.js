@@ -13,21 +13,7 @@ const render = require("./src/page-template.js");
 const teamMembers = [];
 const idArray = [];
 
-let prompt = () => {
-  inquirer.prompt(questions).then((response) => {
-    console.log(response);
-
-    if (response.doNext === "add another employee") {
-      prompt();
-    } else {
-      fs.writeFile("./dist/index.html", generateTeam(response), (err) =>
-        err ? console.log(err) : console.log("response written to file.")
-      );
-    }
-  });
-};
-
-let questions = [
+const questions = [
   {
     type: "list",
     message: "What is the employee's role?",
@@ -75,7 +61,53 @@ let questions = [
   },
 ];
 
-let generateTeam = (data) => {
+const prompt = () => {
+  inquirer.prompt(questions).then((response) => {
+    console.log(response);
+
+    if (response.employeeRole === "manager") {
+      const newManager = new Manager(
+        response.employeeName,
+        response.employeeID,
+        response.employeeEmail,
+        response.managerOffice
+      );
+      teamMembers.push(newManager);
+    }
+
+    if (response.employeeRole === "engineer") {
+      const newEngineer = new Engineer(
+        response.employeeName,
+        response.employeeID,
+        response.employeeEmail,
+        response.engineerGitHub
+      );
+      teamMembers.push(newEngineer);
+    }
+
+    if (response.employeeRole === "intern") {
+      const newIntern = new Intern(
+        response.employeeName,
+        response.employeeID,
+        response.employeeEmail,
+        response.internSchool
+      );
+      teamMembers.push(newIntern);
+    }
+
+    console.log(teamMembers);
+
+    if (response.doNext === "add another employee") {
+      prompt();
+    } else {
+      fs.writeFile("./dist/index.html", generateTeam(teamMembers), (err) =>
+        err ? console.log(err) : console.log("response written to file.")
+      );
+    }
+  });
+};
+
+let generateTeam = (teamMembers) => {
   return `
   test
     `;
