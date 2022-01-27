@@ -63,8 +63,6 @@ const questions = [
 
 const prompt = () => {
   inquirer.prompt(questions).then((response) => {
-    console.log(response);
-
     if (response.employeeRole === "manager") {
       const newManager = new Manager(
         response.employeeName,
@@ -95,8 +93,6 @@ const prompt = () => {
       teamMembers.push(newIntern);
     }
 
-    console.log(teamMembers);
-
     if (response.doNext === "add another employee") {
       prompt();
     } else {
@@ -108,6 +104,70 @@ const prompt = () => {
 };
 
 let generateTeam = (teamMembers) => {
+  const createCards = (teamMembers) => {
+    let cards = "";
+    teamMembers.forEach((teamMember) => {
+      if (
+        teamMembers.filter((teamMember) => teamMember.getRole() === "Manager")
+      ) {
+        cards += addManager(teamMember);
+      } else if (
+        teamMembers.filter((teamMember) => teamMember.getRole() === "Engineer")
+      ) {
+        cards += addEngineer(teamMember);
+      } else {
+        cards += addIntern(teamMember);
+      }
+    });
+    console.log(cards);
+    return cards;
+  };
+
+  let addManager = (manager) => {
+    return `
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+      <div class="card-body">
+      <h5 class="card-title">Manager</h5>
+      <h4 class="card-title">${manager.name}</h4>
+      <p class="card-text">${manager.id}</p>
+      <p class="card-text">${manager.email}</p>
+      <p class="card-text">${manager.officeNumber}</p>
+      </div>
+    </div>
+    `;
+  };
+
+  let addEngineer = (engineer) => {
+    return `
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+      <div class="card-body">
+      <h5 class="card-title">Engineer</h5>
+      <h4 class="card-title">${engineer.name}</h4>
+      <p class="card-text">${engineer.id}</p>
+      <p class="card-text">${engineer.email}</p>
+      <p class="card-text">${engineer.github}</p>
+      </div>
+    </div>
+    `;
+  };
+
+  let addIntern = (intern) => {
+    return `
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+      <div class="card-body">
+      <h5 class="card-title">Intern</h5>
+      <h4 class="card-title">${intern.name}</h4>
+      <p class="card-text">${intern.id}</p>
+      <p class="card-text">${intern.email}</p>
+      <p class="card-text">${intern.school}</p>
+      </div>
+    </div>
+    `;
+  };
+
   return `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -130,7 +190,7 @@ let generateTeam = (teamMembers) => {
           </div>
         </div>
       </nav>
-      ${teamMembers}
+      ${createCards(teamMembers)}
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
