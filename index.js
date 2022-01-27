@@ -125,7 +125,7 @@ let generateTeam = (teamMembers) => {
 
   let addManager = (manager) => {
     return `
-    <div class="card" style="width: 18rem;">
+    <div class="card">
       <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title">Manager</h5>
@@ -140,7 +140,7 @@ let generateTeam = (teamMembers) => {
 
   let addEngineer = (engineer) => {
     return `
-    <div class="card" style="width: 18rem;">
+    <div class="card">
       <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title">Engineer</h5>
@@ -155,7 +155,7 @@ let generateTeam = (teamMembers) => {
 
   let addIntern = (intern) => {
     return `
-    <div class="card" style="width: 18rem;">
+    <div class="card">
       <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title">Intern</h5>
@@ -183,14 +183,18 @@ let generateTeam = (teamMembers) => {
       <title>Team Profile Generator</title>
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light py-5">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light py-5 mb-5">
         <div class="container">
           <div>
             <h3>Team Profile Generator</h3>
           </div>
         </div>
       </nav>
-      ${createCards(teamMembers)}
+      <div class="container">
+        <div class="row">
+          ${createCards(teamMembers)}
+        </div>
+      </div>
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
