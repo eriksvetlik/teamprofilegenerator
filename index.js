@@ -107,15 +107,16 @@ let generateTeam = (teamMembers) => {
   const createCards = (teamMembers) => {
     let cards = "";
     teamMembers.forEach((teamMember) => {
-      if (
-        teamMembers.filter((teamMember) => teamMember.getRole() === "Manager")
-      ) {
+      if (teamMember.getRole() === "Manager") {
+        console.log(teamMember);
         cards += addManager(teamMember);
-      } else if (
-        teamMembers.filter((teamMember) => teamMember.getRole() === "Engineer")
-      ) {
+      }
+
+      if (teamMember.getRole() === "Engineer") {
         cards += addEngineer(teamMember);
-      } else {
+      }
+
+      if (teamMember.getRole() === "Intern") {
         cards += addIntern(teamMember);
       }
     });
