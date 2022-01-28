@@ -127,13 +127,13 @@ let generateTeam = (teamMembers) => {
   let addManager = (manager) => {
     return `
     <div class="card">
-      <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+      <img class="card-img-top" src="../images/managerCard.png" alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title">Manager</h5>
       <h4 class="card-title">${manager.name}</h4>
-      <p class="card-text">${manager.id}</p>
-      <p class="card-text">${manager.email}</p>
-      <p class="card-text">${manager.officeNumber}</p>
+      <p class="card-text">ID: ${manager.id}</p>
+      <p class="card-text">Email: <a href="mailto:${manager.email}" target="_blank">${manager.email}</a></p>
+      <p class="card-text">Office: ${manager.officeNumber}</p>
       </div>
     </div>
     `;
@@ -142,13 +142,13 @@ let generateTeam = (teamMembers) => {
   let addEngineer = (engineer) => {
     return `
     <div class="card">
-      <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+      <img class="card-img-top" src="../images/engineerCard.png" alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title">Engineer</h5>
       <h4 class="card-title">${engineer.name}</h4>
-      <p class="card-text">${engineer.id}</p>
-      <p class="card-text">${engineer.email}</p>
-      <p class="card-text">${engineer.github}</p>
+      <p class="card-text">ID: ${engineer.id}</p>
+      <p class="card-text">Email: <a href="mailto:${engineer.email}" target="_blank">${engineer.email}</a></p>
+      <p class="card-text">Github: <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a></p>
       </div>
     </div>
     `;
@@ -157,13 +157,13 @@ let generateTeam = (teamMembers) => {
   let addIntern = (intern) => {
     return `
     <div class="card">
-      <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+      <img class="card-img-top" src="../images/internCard.png" alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title">Intern</h5>
       <h4 class="card-title">${intern.name}</h4>
-      <p class="card-text">${intern.id}</p>
-      <p class="card-text">${intern.email}</p>
-      <p class="card-text">${intern.school}</p>
+      <p class="card-text">ID: ${intern.id}</p>
+      <p class="card-text">Email: <a href="mailto:${intern.email}" target="_blank">${intern.email}</a></p>
+      <p class="card-text">School: ${intern.school}</p>
       </div>
     </div>
     `;
@@ -184,7 +184,7 @@ let generateTeam = (teamMembers) => {
       <title>Team Profile Generator</title>
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light py-5 mb-5">
+      <nav class="navbar navbar-expand-lg navbar-light py-5 mb-5">
         <div class="container">
           <div>
             <h3>Team Profile Generator</h3>

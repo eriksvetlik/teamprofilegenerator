@@ -1,5 +1,6 @@
 :root {
   --primarycolor: #2d2d2d;
+  --secondarycolor: #e34957;
 }
 
 * {
@@ -14,8 +15,18 @@ body {
 .card {
   margin: 20px auto;
   width: 18rem;
+  box-shadow: 2px 4px 25px var(--primarycolor);
+}
+
+.card:hover {
+  box-shadow: 2px 8px 45px var(--secondarycolor);
+}
+
+.card-img-top {
+  margin-top: 12px;
 }
 
 .navbar {
   padding-bottom: 20px;
+  background-color: var(--secondarycolor);
 }
