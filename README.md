@@ -4,6 +4,8 @@ In this assignment, our task was to create and test a Node.js command-line appli
 
 When the user runs the application in a command-line application, they are prompted to enter manager information. Once complete, they can then enter information for an engineer or an intern if applicable. When the user has entered all employees, an index.html is generated with an information card for each entered employee.
 
+HTML | CSS | Bootstrap | JavaScript | Node.js
+
 # Screenshot
 
 ![Screenshot of webpage](./images/homework-readme.png)
